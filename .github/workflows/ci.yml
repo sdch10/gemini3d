@@ -37,8 +37,6 @@ jobs:
       CC: gcc-${{ matrix.gcc }}
       CXX: g++-${{ matrix.gcc }}
       FC: gfortran-${{ matrix.gcc }}
-      CMAKE: cmake
-      CTEST: ctest
 
     runs-on: ${{ matrix.os }}
 
@@ -61,10 +59,6 @@ jobs:
     strategy:
       matrix:
         model: [msis2]
-
-    env:
-      CMAKE: cmake
-      CTEST: ctest
 
     runs-on: ubuntu-latest
 
@@ -96,4 +90,4 @@ jobs:
       timeout-minutes: 10
       uses: ./.github/workflows/composite-cmake
 
-    - run: cmake --workflow gmake
+    - run: $CMAKE --workflow --preset gmake
